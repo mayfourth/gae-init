@@ -1,0 +1,245 @@
+/*
+    Copyright 2004 Steven Alyari <ossix@ossix.net>. All rights reserved.
+    Except for commify function.  See copyright notice in commify function below.
+
+    This file is part of Mortgage & Loan Calculator.
+
+    Mortgage & Loan Calculator is free software; you can redistribute it
+    and/or modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation; either version 2 of the License,
+    or (at your option) any later version.
+
+    Mortgage & Loan Calculator is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Mortgage & Loan Calculator; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+
+	#gpl, #contact, #copyright,#version { font-size:75%; float:right; width:200px; border-style:dashed; border-color:orange; border-width:1px; padding:5px; margin:5px; margin-bottom:10px; }
+	.ossix { padding-top:.5em; float:right; }
+	.ossix a { 
+		border-style:solid;
+		border-color:white;
+		border-width:1px;
+		font-size:50%;
+		color: white;
+		float:right;
+		text-decoration:none;
+	}
+	.ossix a:hover {
+		color:red;
+		border-color:red;
+	}
+	div  { clear:none; }	
+	table { 
+		width: 100%;
+		font-family:monospace;
+	}
+	
+	td { 
+		text-align:right;
+		padding-left:5px;
+		padding-right:4px;
+		border-bottom-style:dashed;
+		border-bottom-width:1px;
+		border-bottom-color:white;
+	}
+
+	#closeWindowButton {
+		text-align:center;	
+	}
+
+	#amortizeStartMonth {
+		display:inline;
+	}
+	#amortizeStartYear {
+		display:inline;
+	}
+	.formColOne {
+       		width:300px;
+        	float:left;
+        	margin-left:3px;
+	}
+	.formColTwo {
+	        width:285px;
+	        float:right;
+	}
+	#amortizeButton {
+		color:blue;
+	}
+	body {
+		padding:.3em;
+		color:black;
+		background-color: #FFFDED;
+		font-family:sans-serif;	
+	}
+
+	#body {
+		padding:.5em;
+		width:500px;	
+	}
+	#solve {
+	}
+	.textButton {
+		text-decoration:underline;
+		padding:10px;
+		font-size:15px;
+		color:blue;
+		cursor:pointer;
+	}
+	.textButton:hover {
+		color:magenta;
+	}
+	#helpIco {
+		display:none;
+		position:absolute;
+		left:490px;
+	}
+	.menuArea {
+		margin:.4em;
+	}
+	.info {
+		padding-left:20px;
+		padding-bottom:5px;
+		background: #eee url(./skin/ico/info.gif) no-repeat top left;
+	}
+	.error {
+		padding-left:20px;
+		padding-bottom:5px;
+		background: #eee url(./skin/ico/alert.gif) no-repeat top left;
+	}
+	#solveFor {
+		margin:.4em;
+	}
+	#inputValues {
+		width:170px;
+	}
+	.result {
+		display:inline;
+	}
+	.resultVal {
+		margin-top:3px;
+		font-family:sans-serif;
+		font-size:12px;
+		border-width:0px;
+		background-color:#eee;
+	}
+	#results {
+		width:270px;
+	}
+	#noteAmortBox {
+		margin-top:1px; /* only for mozilla */
+		width:270px;
+	}
+	#noteAmort {
+		background: #eee url(./skin/ico/comment.gif) no-repeat top left;
+		padding-left:22px;
+		color:#888;
+	}
+	.resultAttr {
+		margin:.5em;
+	}
+	.attr {
+		margin:.5em;
+	}
+	.label {
+	}
+	.var {
+	}
+	.input,.submit {
+		border-width:1px;
+	}
+	.input {
+		width:150px; 
+	}
+	.resultVal {
+	}
+	#solveFor {
+		display:inline;
+	}
+	#submitSolve,#submitAmort {
+		display:inline;
+		margin-right:5px;	
+	}
+	.box  {
+		background: #eee;
+		border-right: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		padding: 5px;
+		font-size: 11px;
+	}
+	.box2 {
+		border-top: 1px solid #fff;
+	}	
+	h1 {
+		font-size:25px;
+		margin:0px;
+		padding:0px;
+		padding-top:10px;
+		font-family:sans-serif;
+	}
+	.mainTitle {
+		margin: 0 0 0 0;
+		padding: 10px;
+		font-size: 130%;
+		color: #fff;
+		border-bottom: 1px solid #fff;
+		background: #9c6 url(./skin/box_top.gif) no-repeat top left;
+	}
+	.mainContainer {
+		background: #cf9 url(./skin/box_bottom.gif) no-repeat bottom left;
+		float:left;
+		width:510px;
+		padding-bottom:15px;
+		margin-bottom:15px;	
+	} 
+	.mainBody {
+		padding:10px;
+	}
+	#mainTitle {
+		background-color:#933;
+	}
+	#mainContainer {
+		background-color:#c99;
+	}
+	#mainTitle {
+		background-color:#69c;
+	}
+	#mainContainer {
+		background-color:#9cf;
+	}
+
+	#solveForInfoBox {	
+		display:block;
+	}
+	#errorBox {	
+		margin-bottom:1px; /* may be mozilla only feature */
+		display:none;
+	}
+	#requiredInputMissingError {
+		display:none;
+	}	
+	#paymentLessThanPresentValueError {
+		display:none;
+	}
+	#solveForPresentValueInfo {
+		display:none;
+	}
+	#solveForInterestRateInfo {
+		display:none;
+	}
+	#solveForMonthsInfo {
+		display:none;
+	}
+	#solveForPaymentInfo {
+		display:block;
+	}
+	#solveForFutureValueInfo {
+		display:none;
+	}
+

@@ -44,6 +44,10 @@ handlers:
   static_dir: static/
   expiration: "365d"
 
+- url: /ff/p/
+  static_dir: ff/static/
+  expiration: "365d"
+
 - url: /.*
   script: main.app
   secure: always

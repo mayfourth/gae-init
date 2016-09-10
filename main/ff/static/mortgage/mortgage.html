@@ -1,0 +1,253 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--
+/*
+    Copyright 2004 Steven Alyari <ossix@ossix.net>. All rights reserved.
+
+    This file is part of Mortgage & Loan Calculator.
+
+    Mortgage & Loan Calculator is free software; you can redistribute it
+    and/or modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation; either version 2 of the License,
+    or (at your option) any later version.
+
+    Mortgage & Loan Calculator is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Mortgage & Loan Calculator if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+*/
+
+-->
+<head>
+<meta name="generator"
+content="HTML Tidy for Linux/x86 (vers 1st March 2002), see www.w3.org" />
+<link rel="stylesheet" type="text/css" href="../css/style.css"
+media="all" />
+<meta http-equiv="content-type"
+content="text/html; charset=iso-8859-1" />
+<title>Mortage Calculator</title>
+ <script type="text/javascript" src="mortgage.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<div class="filler"></div>
+<div class="title">
+<h1>Mortgage & Loan Calculator</h1>
+<br />
+A mortgage calculator which computes payment, present value, interest, and period.  Also useful for car payments and possibly other loans.
+<div>
+
+
+<form id="form" name="form" action="">
+
+<div id="body">
+<div class="mainContainer" id="mainContainer">
+
+<div class="mainTitle" id="mainTitle">
+	<h1>Mortgage & Loan Calculator</h1>
+</div>
+
+<div id="solve" class="box">
+	<div class="menuArea" id="solveFor">
+		Solve For:
+		<select name="solveFor" onchange="main('SwitchSolveFor');">
+			<option value="P">Present Value</option>
+			<option value="i">Interest Rate</option>
+			<option value="n">Months/Years</option>
+			<option value="A" selected="selected">Payment</option>
+			<option value="F">Future Value</option>
+		</select>
+	</div>
+	<div id="submitSolve">
+		<span id="solveButton" class="submit textButton" onclick="main('Solve');">Solve</span>
+	</div>
+	<a href=""><img alt="" id="helpIco" border="0" src="help.gif" /></a>
+</div>
+<div class="box box2" id="solveForInfoBox">
+	<div class="menuArea info" id="solveForPresentValueInfo">
+		Solving for present value: The cost of the property minus the down payment (i.e. the principal).
+	</div>
+	<div class="menuArea info" id="solveForInterestRateInfo">
+ 		Solving for interest rate: The annual rate of interest that a creditor charges a borrower for loaning money.
+	</div>
+	<div class="menuArea info" id="solveForMonthsInfo">
+		Solving for months: The amount of time needed to pay off (or amortize) the loan.
+	</div>
+	<div class="menuArea info" id="solveForPaymentInfo">
+		Solving for payment: The monthly payment needed to pay off (or amortize) the loan.
+	</div>
+	<div class="menuArea info" id="solveForFutureValueInfo">
+		Solving for future value: The value of the property at a specified date in the future that is equivalent in value to the current property value today.
+	</div>
+</div>
+<div class="box box2" id="errorBox">
+	<div class="menuArea error" id="requiredInputMissingError">
+		There were errors in the input: Required input was missing.
+	</div>
+	<div class="menuArea error" id="paymentLessThanPresentValueError">
+		There were errors in the input: Payment should not be greater than Present Value.
+	</div>
+</div>
+
+<div class="box box2" id="amortizeSolveBox">
+	<div class="menuArea" id="amortizeSolve">
+		Amortize:
+		<div id="amortizeStartMonth">
+			Month:
+			<select name="M">
+				<option value="0">January</option>
+				<option value="1">February</option>
+				<option value="2">March</option>
+				<option value="3">April</option>
+				<option value="4">May</option>
+				<option value="5">June</option>
+				<option value="6">July</option>
+				<option value="7">August</option>
+				<option value="8">September</option>
+				<option value="9">October</option>
+				<option value="10">November</option>
+				<option value="11">December</option>
+			</select>
+		</div>
+		<div id="amortizeStartYear">
+			Year:
+			<select name="Y">
+				<option value="1980">1980</option>
+				<option value="1981">1981</option>
+				<option value="1982">1982</option>
+				<option value="1983">1983</option>
+				<option value="1984">1984</option>
+				<option value="1985">1985</option>
+				<option value="1986">1986</option>
+				<option value="1987">1987</option>
+				<option value="1988">1988</option>
+				<option value="1989">1989</option>
+				<option value="1990">1990</option>
+				<option value="1991">1991</option>
+				<option value="1992">1992</option>
+				<option value="1993">1993</option>
+				<option value="1994">1994</option>
+				<option value="1995">1995</option>
+				<option value="1996">1996</option>
+				<option value="1997">1997</option>
+				<option value="1998">1998</option>
+				<option value="1999">1999</option>
+				<option value="2000">2000</option>
+				<option value="2001">2001</option>
+				<option value="2002">2002</option>
+				<option value="2003">2003</option>
+				<option value="2004">2004</option>
+				<option value="2005">2005</option>
+				<option value="2006">2006</option>
+				<option value="2007">2007</option>
+				<option value="2008">2008</option>
+				<option value="2009">2009</option>
+			</select>
+		</div>
+		<div id="submitAmort">
+			<span id="amortizeButton" class="submit textButton" onclick="main('Amortize');">Show Amortization</span>
+		</div>
+	</div>
+</div>
+
+<div class="mainBody" id="mainBody">
+
+<div id="inputValues" class="box formColOne">
+	<div class="attr">
+		<div class="label">Present Value:</div>
+		<div class="var">
+			<input class="input" id="P" name="P" value="" />
+		</div>
+	</div>
+	<div class="attr">
+		<div class="label">Interest Rate:</div>
+		<div class="var">
+			<input class="input" id="i" name="i" value="" />
+		</div>
+	</div>
+	<div class="attr">	
+		<div class="label">
+			<div> Period: </div>
+		</div> 
+		<div class="var">
+			<input class="input" id="n" name="n" value="" />
+			<input type="radio" name="PU" value="1" /> Months
+			or
+			<input type="radio" name="PU" value="0" /> Years
+		</div>
+	</div>
+	<div class="attr">
+		<div class="label">Payment:</div>
+		<div class="var">
+			<input class="input" id="A" name="A" value="" />
+		</div>
+	</div>
+	<div class="attr">
+		<div class="label">Future Value:</div>
+		<div class="var">
+			<input class="input" id="F" name="F" value="" />
+		</div>
+	</div>
+	<div class="attr">
+		<div class="label">Baloon After Period:</div>
+		<div class="var">
+			<input class="input" id="b" name="b" value="" />
+			<input type="radio" name="BPU" value="1" /> Months
+			or
+			<input type="radio" name="BPU" value="0" checked="checked" /> Years
+		</div>
+	</div>
+</div>
+
+
+<div id="formColTwo" class="formColTwo">
+	<div id="results" class="box">
+	<div class="resultAttr">Present Value:
+		<div id="presentValue" class="result"><input class="resultVal" name="RP" value="" readonly="readonly" /></div>
+	</div> 
+	<div class="resultAttr">Interest Rate:
+		<div id="interestRate" class="result"><input class="resultVal" name="Ri" value="" readonly="readonly" /></div>
+	</div>
+	<div class="resultAttr">Months/Years:
+		<div id="months" class="result"><input class="resultVal" name="Rn" value="" readonly="readonly" /></div>
+	</div>
+	<div class="resultAttr">Payment:
+		<div id="payment" class="result"><input class="resultVal" name="RA" value="" readonly="readonly" /></div>
+	</div>
+	<div class="resultAttr">Future Value:
+		<div id="futureValue" class="result"><input class="resultVal" name="RF" value="" readonly="readonly" /></div>
+	</div>
+	<div class="resultAttr">Baloon Amount:
+		<div id="baloonAmount" class="result"><input class="resultVal" name="B" value="" readonly="readonly" /></div>
+	</div>
+	<div class="resultAttr">Interest Amount:
+		<div id="interestAmount" class="result"><input class="resultVal" name="RI" value="" readonly="readonly" /></div>
+	</div>
+	<div class="resultAttr">Total Amount:
+		<div id="totalAmount" class="result"><input class="resultVal" name="RT" value="" readonly="readonly" /></div>
+	</div>
+	</div>
+
+	<div id="noteAmortBox" class="box box2">
+	<div id="noteAmort">Note: After you solve, you will be able to view the amortization schedule.</div>
+	</div>
+
+</div>
+
+
+</div>
+</div>
+<script type="text/javascript">
+	main('Init');
+	/* leave this code at the bottom of the page; due to an IE display bug. */
+</script>
+</div>
+</form>
+
+</body>
+</html>
+
+
