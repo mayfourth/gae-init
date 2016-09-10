@@ -44,8 +44,8 @@ handlers:
   static_dir: static/
   expiration: "365d"
 
-- url: /ff/p/
-  static_dir: ff/static/
+- url: /ffrog/p/
+  static_dir: ffrog/static/
   expiration: "365d"
 
 - url: /.*

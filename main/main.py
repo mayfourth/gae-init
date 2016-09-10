@@ -20,7 +20,7 @@ import auth
 import control
 import model
 import task
-import contact
+from ffrog import contact
 
 from api import helpers
 
