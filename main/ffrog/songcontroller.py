@@ -16,6 +16,7 @@ class SongUpdateForm(wtf.Form):
   lyrics   = wtforms.StringField('Lyrics', [wtforms.validators.required()])
   youtubeId = wtforms.StringField('youtubeId', [wtforms.validators.optional()])
   audioId  = wtforms.StringField('audioId', [wtforms.validators.optional()])
+  audioUrl  = wtforms.StringField('audioUrl', [wtforms.validators.optional()])
 
 @app.route('/song/create/', methods=['GET', 'POST'])
 def song_create():
