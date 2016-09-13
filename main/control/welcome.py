@@ -3,6 +3,8 @@
 import flask
 
 import config
+import model
+import util
 
 from main import app
 
@@ -12,7 +14,15 @@ from main import app
 ###############################################################################
 @app.route('/')
 def welcome():
-  return flask.render_template('welcome.html', html_class='welcome')
+  song_dbs, song_cursor = model.SongModel.get_dbs()
+  #return flask.render_template('welcome.html', html_class='welcome')
+  return flask.render_template(
+      'welcome.html', 
+      html_class='welcome',
+      title='Welcome',
+      song_dbs=song_dbs,
+      next_url=util.generate_next_url(song_cursor),
+      )
 
 
 ###############################################################################

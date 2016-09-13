@@ -1,0 +1,34 @@
+# extends 'base.html'
+
+# block content
+  <div class="page-header">
+    <h1>{{title}}</h1>
+    <a href="{{url_for('song_create')}}">
+       create new song
+    </a>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      # for song_db in song_dbs
+        <tr>
+          <td>
+            <a href="{{url_for('song_update', song_id=song_db.key.id())}}">
+              {{song_db.key.id()}}
+            </a>
+          </td>
+          <td>
+            <a href="{{url_for('song_view', song_id=song_db.key.id())}}">
+              {{song_db.name}}
+            </a>
+          </td>
+        </tr>
+      # endfor
+    </tbody>
+  </table>
+# endblock

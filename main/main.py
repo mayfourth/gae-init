@@ -21,6 +21,7 @@ import control
 import model
 import task
 from ffrog import contact
+from ffrog import songcontroller
 
 from api import helpers
 
