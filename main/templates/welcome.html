@@ -3,8 +3,17 @@
 # block header
   <div class="jumbotron">
     <div class="container">
-      <h1>{{config.CONFIG_DB.brand_name}}</h1>
-      <p>Hello, Let's play!</p>
+      <!-- <h1>{{config.CONFIG_DB.brand_name}}</h1> -->
+      <table>
+        <tr>
+          <td>
+           <img src="https://usercontent1.hubstatic.com/5094856_f260.jpg" alt="高二一" height="80" width="80">
+          </td>
+          <td>
+          	<p>飞蛙们，Let's play!</p>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 # endblock
@@ -18,7 +27,7 @@
               {{song_db.name}}
             </a>
             </h2>
-           <p>{{song_db.lyrics}}</p>
+           <p>{{song_db.lyrics[0:400]}}</p>
        </div>
     # endfor
   </div>

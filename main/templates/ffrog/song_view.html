@@ -2,6 +2,24 @@
 # block content
     <div class="page-header">
       <h1>{{title}}</h1>
+       <a href="{{song_db.audioUrl}}">play</a>
+    </div>
+
+    <iframe src="{{song_db.audioUrl}}" height="1" width="1"></iframe>
+<!--
+    <div id="musicBind">
+       <audio loop=1 >
+           # if song_db.audioUrl != ''
+           <source src="{{song_db.audioUrl}}" type="audio/mpeg">
+           # elif song_db.audioId != ''    
+           <source src="/ffrog/p/audio/{{song_db.audioId}}.mp3" type="audio/mpeg">
+           # endif
+           Your browser does not support the audio element.
+       </audio>
+    </div>
+-->
+    <div id="lyrics">
+		<p>{{song_db.lyrics}}</p>
     </div>
   
     # if song_db.youtubeId != ''
@@ -36,18 +54,20 @@
       var done = false;
       function onPlayerStateChange(event) {
         if (event.data == YT.PlayerState.PLAYING && !done) {
-          setTimeout(stopVideo, 15000);
+          setTimeout(startMusic, 15000);
           //done = true;
         }
       }
-      function stopVideo() {
+      function startMusic() {
         //player.stopVideo();
+        /*
         var musicBind = document.getElementById('musicBind');
         var audios = musicBind.getElementsByTagName('audio');
 		var divArray = [];
 		for (var i = 0; i < audios.length; i += 1) {
 			  audios[i].play();
 		}
+		*/
       }
     </script>
     # endif
@@ -63,20 +83,7 @@
     </script>
     # endif
 
-    <div id="musicBind">
-       <audio loop=1 >
-           # if song_db.audioUrl != ''
-           <source src="{{song_db.audioUrl}}" type="audio/mpeg">
-           # elif song_db.audioId != ''    
-           <source src="/ffrog/p/audio/{{song_db.audioId}}.mp3" type="audio/mpeg">
-           # endif
-           Your browser does not support the audio element.
-       </audio>
-    </div>
 
-    <div id="lyrics">
-		<p>{{song_db.lyrics}}</p>
-    </div>
 # endblock
 
 
