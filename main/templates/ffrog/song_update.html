@@ -11,6 +11,8 @@
         <fieldset>
           {{form.csrf_token}}
           {{forms.text_field(form.name, autofocus=True)}}
+          {{forms.text_field(form.active)}}
+          {{forms.text_field(form.viewCount)}}
           {{forms.text_field(form.audioId)}}
           {{forms.text_field(form.audioUrl)}}
           {{forms.text_field(form.youtubeId)}}

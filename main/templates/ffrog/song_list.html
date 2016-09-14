@@ -10,21 +10,21 @@
   <table class="table table-bordered">
     <thead>
       <tr>
-        <th>ID</th>
         <th>Name</th>
+        <th>ID</th>
       </tr>
     </thead>
     <tbody>
       # for song_db in song_dbs
         <tr>
           <td>
-            <a href="{{url_for('song_update', song_id=song_db.key.id())}}">
-              {{song_db.key.id()}}
+            <a href="{{url_for('song_view', song_id=song_db.key.id())}}">
+              {{song_db.name}}
             </a>
           </td>
           <td>
-            <a href="{{url_for('song_view', song_id=song_db.key.id())}}">
-              {{song_db.name}}
+            <a href="{{url_for('song_update', song_id=song_db.key.id())}}">
+              {{song_db.key.id()}}
             </a>
           </td>
         </tr>

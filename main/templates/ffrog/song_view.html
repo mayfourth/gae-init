@@ -75,10 +75,12 @@
     # if song_db.youtubeId == ''
     <script>
         var musicBind = document.getElementById('musicBind');
-        var audios = musicBind.getElementsByTagName('audio');
-		var divArray = [];
-		for (var i = 0; i < audios.length; i += 1) {
+        if (musicBind) {
+        	var audios = musicBind.getElementsByTagName('audio');
+			var divArray = [];
+			for (var i = 0; i < audios.length; i += 1) {
 			  audios[i].play();
+			}
 		}
     </script>
     # endif

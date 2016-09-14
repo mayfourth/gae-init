@@ -17,6 +17,8 @@ class SongUpdateForm(wtf.Form):
   youtubeId = wtforms.StringField('youtubeId', [wtforms.validators.optional()])
   audioId  = wtforms.StringField('audioId', [wtforms.validators.optional()])
   audioUrl  = wtforms.StringField('audioUrl', [wtforms.validators.optional()])
+  active  = wtforms.StringField('active', [wtforms.validators.optional()])
+  viewCount  = wtforms.StringField('viewCount', [wtforms.validators.optional()])
 
 @app.route('/song/create/', methods=['GET', 'POST'])
 def song_create():
@@ -37,10 +39,23 @@ def song_create():
       form=form,
     )
 
+def isAdminUser(auth):
+  if auth is None or auth.current_user_db() is None:
+      return False
 
+  if "kai" in auth.current_user_db().name.lower():  #TODO
+      print "====admin user " , auth.current_user_db().name
+      return True
+  return False
+      
 @app.route('/song/')
 def song_list():
-  song_dbs, song_cursor = model.SongModel.get_dbs()
+  if isAdminUser(auth):
+      song_dbs, song_cursor = model.SongModel.get_dbs()
+  #if auth is not None and auth.current_user_db() is not None and auth.current_user_db().name =='Test':
+  #    print auth.current_user_db().name #.current_user_id(); # =='kai.xu.us'
+  else:
+      song_dbs, song_cursor = model.SongModel.get_dbs(active='1')  #active is a field in SongModel
   return flask.render_template(
       'ffrog/song_list.html',
       html_class='song-list',
@@ -55,6 +70,8 @@ def song_view(song_id):
   song_db = model.SongModel.get_by_id(song_id)
   if not song_db:
     flask.abort(404)
+  song_db.viewCount = str(int(song_db.viewCount) + 1)
+  song_db.put()
   return flask.render_template(
       'ffrog/song_view.html',
       html_class='song-view',
