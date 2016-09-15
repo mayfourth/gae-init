@@ -6,3 +6,4 @@ from .config import Config
 from .user import User
 from .contact import Contact
 from .songModel import SongModel
+from .headlineModel import HeadlineModel

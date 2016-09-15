@@ -20,6 +20,12 @@ class SongUpdateForm(wtf.Form):
   active  = wtforms.StringField('active', [wtforms.validators.optional()])
   viewCount  = wtforms.StringField('viewCount', [wtforms.validators.optional()])
 
+
+class HeadlineUpdateForm(wtf.Form):
+  name     = wtforms.StringField('Name', [wtforms.validators.required()])
+  htmlContent   = wtforms.StringField('HtmlContent', [wtforms.validators.optional()])
+  active  = wtforms.StringField('active', [wtforms.validators.optional()])  
+
 @app.route('/song/create/', methods=['GET', 'POST'])
 def song_create():
   form = SongUpdateForm()
@@ -97,3 +103,35 @@ def song_update(song_id):
       form=form,
       song_db=song_db,
     )
+
+@app.route('/headline/update/', methods=['GET', 'POST'])
+def headline_update():
+  headline_dbs, headline_cursor = model.HeadlineModel.get_dbs()
+  if not headline_dbs:
+        form = HeadlineUpdateForm()
+        if form.validate_on_submit():
+            headline_db = model.HeadlineModel(
+                name         =form.name.data,
+                htmlContent  =form.htmlContent.data)
+            headline_db.put()
+            return flask.redirect(flask.url_for('song_list', order='-modified'))
+        return flask.render_template(
+            'ffrog/headline_update.html',
+            html_class='headline-create',
+            title='Create headline',
+            form=form,
+            )
+  else:
+        headline_db = headline_dbs.pop()
+        form = HeadlineUpdateForm(obj=headline_db)
+        if form.validate_on_submit():
+            form.populate_obj(headline_db)
+            headline_db.put()
+            return flask.redirect(flask.url_for('song_list', order='-modified'))
+        return flask.render_template(
+            'ffrog/headline_update.html',
+            html_class='headline-update',
+            title=headline_db.name,
+            form=form,
+            headline_db=headline_db,
+            )
