@@ -37,7 +37,7 @@ def song_create():
       )
     song_db.put()
     flask.flash('New Song was successfully created!', category='success')
-    return flask.redirect(flask.url_for('song_list', order='-created'))
+    return flask.redirect(flask.url_for('song_list', order='-name'))   #order='-created'
   return flask.render_template(
       'ffrog/song_update.html',
       html_class='song-create',
@@ -95,7 +95,7 @@ def song_update(song_id):
   if form.validate_on_submit():
     form.populate_obj(song_db)
     song_db.put()
-    return flask.redirect(flask.url_for('song_list', order='-modified'))
+    return flask.redirect(flask.url_for('song_list', order='-modified'))   # order='-modified'
   return flask.render_template(
       'ffrog/song_update.html',
       html_class='song-update',
@@ -114,7 +114,7 @@ def headline_update():
                 name         =form.name.data,
                 htmlContent  =form.htmlContent.data)
             headline_db.put()
-            return flask.redirect(flask.url_for('song_list', order='-modified'))
+            return flask.redirect(flask.url_for('song_list', order='name'))
         return flask.render_template(
             'ffrog/headline_update.html',
             html_class='headline-create',
@@ -127,7 +127,7 @@ def headline_update():
         if form.validate_on_submit():
             form.populate_obj(headline_db)
             headline_db.put()
-            return flask.redirect(flask.url_for('song_list', order='-modified'))
+            return flask.redirect(flask.url_for('song_list',order='name'))
         return flask.render_template(
             'ffrog/headline_update.html',
             html_class='headline-update',

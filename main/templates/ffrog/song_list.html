@@ -19,9 +19,12 @@
       # for song_db in song_dbs
         <tr>
           <td>
-            <a href="{{url_for('song_view', song_id=song_db.key.id())}}">
+            # if song_db.audioUrl
+              <a href="{{url_for('song_view', song_id=song_db.key.id())}}"> {{song_db.name}} </a>
+            # else
               {{song_db.name}}
-            </a>
+            # endif
+            
           </td>
           <td>
             <a href="{{url_for('song_update', song_id=song_db.key.id())}}">

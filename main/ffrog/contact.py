@@ -32,7 +32,7 @@ def contact_create():
       )
     contact_db.put()
     flask.flash('New contact was successfully created!', category='success')
-    return flask.redirect(flask.url_for('contact_list', order='-created'))
+    return flask.redirect(flask.url_for('contact_list', order='-name'))  #, order='-created'
   return flask.render_template(
       'ffrog/contact_update.html',
       html_class='contact-create',
