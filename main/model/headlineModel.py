@@ -6,5 +6,5 @@ import model
 
 class HeadlineModel(model.Base):
   name        = ndb.StringProperty(required=True)
-  htmlContent = ndb.StringProperty(default='')
+  htmlContent = ndb.TextProperty(default='')
   active   =  ndb.StringProperty(default='1')
