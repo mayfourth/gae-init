@@ -19,7 +19,7 @@ def welcome():
   if headline_dbs:
       headline = headline_dbs.pop().htmlContent
 
-  song_dbs, song_cursor = model.SongModel.get_dbs()
+  song_dbs, song_cursor = model.SongModel.get_dbs(active='1')
   #return flask.render_template('welcome.html', html_class='welcome')
   return flask.render_template(
       'welcome.html', 
